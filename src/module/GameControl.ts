@@ -52,12 +52,39 @@ class GameControl {
             X -= 10;
             break;
     }
-    this.snake.X = X;
-    this.snake.Y = Y;
+
+    // 判断是否吃到食物
+    this.checkEat(X,Y);
+
+    try {
+      this.snake.X = X;
+      this.snake.Y = Y;
+
+    }catch(e:any) {
+    alert(e.message);
+    this.isLive = false;
+      
+
+    }
+   
     //蛇还活着就继续活动
     this.isLive && setTimeout(this.move.bind(this),300 - (this.scorePanel.level - 1) * 30);
 
 
+  }
+
+  checkEat(X:number,Y:number) {
+
+   if(X === this.food.X  && Y === this.food.Y) {
+      //食物位置改变
+      this.food.change();
+      //加分
+      this.scorePanel.addScore();
+      //蛇的身体增加
+      this.snake.addBody();
+
+    }
+      
   }
 
 }

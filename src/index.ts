@@ -5,10 +5,10 @@ import './style/index.less';
 import GameControl from './module/GameControl'
 
 const gc = new GameControl()
- setInterval(() => {
-  console.log(gc.direction);
+//  setInterval(() => {
+//   console.log(gc.direction);
   
- },1000);
+//  },1000);
 
 // const food = new Food()
 // food.change()
